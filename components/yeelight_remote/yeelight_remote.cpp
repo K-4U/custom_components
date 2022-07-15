@@ -58,6 +58,9 @@ namespace esphome {
                             case 0x05:
                                 this->handleTwistLeft();
                                 break;
+							case 0x06:
+								this->handleLongPress();
+								break;
                         }
                     }
                     inMessage = false;
@@ -70,8 +73,12 @@ namespace esphome {
 
         //TODO: Double push?
         void YeelightRemote::handlePress() {
-            ESP_LOGD(TAG, "Push!");
+            ESP_LOGD(TAG, "Press!");
             this->press_trigger_->trigger();
+        }
+		void YeelightRemote::handleLongPress() {
+            ESP_LOGD(TAG, "Long press!");
+            this->long_press_trigger_->trigger();
         }
 
         void YeelightRemote::handleTwistLeft() {
@@ -85,12 +92,12 @@ namespace esphome {
         }
 
         void YeelightRemote::handlePressAndTwistLeft() {
-            ESP_LOGD(TAG, "Push Left!");
+            ESP_LOGD(TAG, "Press Left!");
             this->press_left_trigger_->trigger();
         }
 
         void YeelightRemote::handlePressAndTwistRight() {
-            ESP_LOGD(TAG, "Push Right!");
+            ESP_LOGD(TAG, "Press Right!");
             this->press_right_trigger_->trigger();
         }
     }

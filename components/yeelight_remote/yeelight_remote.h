@@ -13,6 +13,7 @@ namespace yeelight_remote {
         void loop() override;
 
         Trigger<> *get_press_trigger() const { return press_trigger_; }
+        Trigger<> *get_long_press_trigger() const { return long_press_trigger_; }
         Trigger<> *get_left_trigger() const { return left_trigger_; }
         Trigger<> *get_right_trigger() const { return right_trigger_; }
         Trigger<> *get_press_left_trigger() const { return press_left_trigger_; }
@@ -27,6 +28,7 @@ namespace yeelight_remote {
 
         void handle_char_(uint8_t readByte);
 		void handlePress();
+		void handleLongPress();
 		void handleTwistLeft();
 		void handleTwistRight();
 		void handlePressAndTwistLeft();
@@ -34,6 +36,7 @@ namespace yeelight_remote {
 		
 		
 		Trigger<> *press_trigger_ = new Trigger<>();
+		Trigger<> *long_press_trigger_ = new Trigger<>();
 		Trigger<> *left_trigger_ = new Trigger<>();
 		Trigger<> *right_trigger_ = new Trigger<>();
 		Trigger<> *press_left_trigger_ = new Trigger<>();

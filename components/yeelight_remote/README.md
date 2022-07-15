@@ -26,8 +26,11 @@ yeelight_remote:
 	  - light.dim_relative:
 	    id: light1
 		relative_brightness: 5%
+  on_long_press:
+    - light.toggle: ring
   on_press_left:
 	- 
   on_press_right:
 	- 
+  
 ```
